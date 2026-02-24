@@ -93,3 +93,9 @@ npm create vite@latest my-custom-comp -- --template react-ts
 7. 发布：npm publish
 
 后续 执行 6.7即可
+
+# 测试组件
+
+1. 创建examples文件夹 并新增 package.json，vite.config.ts，index.html，src/main.tsx，src/App.tsx 文件
+
+2. 这是一个独立的子项目，正常npm install, npm run dev 即可
