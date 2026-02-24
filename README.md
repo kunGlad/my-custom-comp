@@ -82,10 +82,14 @@ npm create vite@latest my-custom-comp -- --template react-ts
 
 2. npm login
 
-3. 创建.npmrc文件，并添加registry=https://registry.npmjs.org/
+# 发布
 
-4. 构建项目（如果还没构建过）：npm run build
+1. package.json配置
+2. vite.config.ts
+3. packages/index.ts:导出写法
+4. 清理旧的构建：rm -rf dist node_modules/.vite
+5. 重新安装依赖（确保干净环境）：rm -rf node_modules package-lock.json ， npm install
+6. 构建：npm run build
+7. 发布：npm publish
 
-5. 发布 npm publish
-
-6. 每次修改后重新构建: rm -rf dist ， npm run build， 修改版本号后npm publish
+后续 执行 6.7即可
