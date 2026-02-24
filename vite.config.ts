@@ -1,10 +1,3 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
@@ -13,29 +6,34 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [
     react(),
-    dts({ // 自动生成 .d.ts 文件，提供类型提示
-      entryRoot: './packages',
-      outDir: ['dist/es', 'dist/lib']
+    dts({
+      insertTypesEntry: true,
+      entryRoot: 'packages',
+      tsconfigPath: './tsconfig.json'
     })
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'packages/index.ts'), // 入口文件
-      name: 'MyCustomComp', // 全局变量名（UMD格式用）
-      fileName: (format) => `index.${format}.js` // 输出文件名
+      entry: resolve(__dirname, 'packages/index.ts'),
+      name: 'MyCompanyUI',
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['react', 'react-dom'], // 将 React 视为外部依赖，不打包进库
+      external: ['react', 'react-dom'],
       output: [
         {
-          format: 'es', // ES 模块格式（现代项目使用）
+          format: 'es',
           dir: 'dist/es',
-          preserveModules: true, // 保持目录结构，支持按需引入
+          entryFileNames: '[name].js',
+          preserveModules: true,
+          preserveModulesRoot: 'packages'
         },
         {
-          format: 'cjs', // CommonJS 格式（Node.js 环境）
+          format: 'cjs',
           dir: 'dist/lib',
+          entryFileNames: '[name].js',
           preserveModules: true,
+          preserveModulesRoot: 'packages'
         }
       ]
     }

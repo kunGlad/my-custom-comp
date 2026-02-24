@@ -1,11 +1,18 @@
 {
-  "name": "my-custom-comp",
-  "private": true,
-  "version": "1.0.0",
+  "name": "@kunglad/my-custom-comp",
+  "private": false,
+  "version": "1.0.5",
   "type": "module",
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/es/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/lib/index.js",
+      "types": "./dist/es/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -14,12 +21,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "rm -rf dist && vite build",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "prepack": "npm run build && npm run build:types"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

@@ -75,3 +75,17 @@ export default defineConfig([
 # 创建vite项目
 
 npm create vite@latest my-custom-comp -- --template react-ts
+
+# 登录npm
+
+1. 切换为官方登录源 npm config set registry https://registry.npmjs.org/
+
+2. npm login
+
+3. 创建.npmrc文件，并添加registry=https://registry.npmjs.org/
+
+4. 构建项目（如果还没构建过）：npm run build
+
+5. 发布 npm publish
+
+6. 每次修改后重新构建: rm -rf dist ， npm run build， 修改版本号后npm publish
