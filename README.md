@@ -90,7 +90,7 @@ npm create vite@latest my-custom-comp -- --template react-ts
 4. 清理旧的构建：rm -rf dist node_modules/.vite
 5. 重新安装依赖（确保干净环境）：rm -rf node_modules package-lock.json ， npm install
 6. 构建：npm run build
-7. 发布：npm publish
+7. 发布：更改版本号，npm publish
 
 后续 执行 6.7即可
 

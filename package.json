@@ -1,7 +1,7 @@
 {
   "name": "@kunglad/my-custom-comp",
   "private": false,
-  "version": "1.0.5",
+  "version": "1.0.7",
   "type": "module",
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
